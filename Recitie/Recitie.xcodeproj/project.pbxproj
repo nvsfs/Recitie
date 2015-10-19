@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6182082D1BD52DDB001AF83F /* TodoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6182082C1BD52DDB001AF83F /* TodoItem.swift */; settings = {ASSET_TAGS = (); }; };
+		6182082F1BD53072001AF83F /* TodoList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6182082E1BD53072001AF83F /* TodoList.swift */; settings = {ASSET_TAGS = (); }; };
 		9A10AEFF1BCD33A8000AE752 /* CadastroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A10AEFE1BCD33A8000AE752 /* CadastroViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		9A10AF031BCD4D6A000AE752 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A10AF021BCD4D6A000AE752 /* User.swift */; settings = {ASSET_TAGS = (); }; };
 		9A80B6071BCEA9A70028F6D2 /* EventosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A80B6061BCEA9A70028F6D2 /* EventosViewController.swift */; settings = {ASSET_TAGS = (); }; };
@@ -53,6 +55,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6182082C1BD52DDB001AF83F /* TodoItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodoItem.swift; sourceTree = "<group>"; };
+		6182082E1BD53072001AF83F /* TodoList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodoList.swift; sourceTree = "<group>"; };
 		9A10AEFB1BCD275E000AE752 /* Recitie.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Recitie.entitlements; sourceTree = "<group>"; };
 		9A10AEFE1BCD33A8000AE752 /* CadastroViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CadastroViewController.swift; sourceTree = "<group>"; };
 		9A10AF021BCD4D6A000AE752 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -172,6 +176,8 @@
 				9AE9DEDA1BD1C74D00527AAB /* ViewControllers */,
 				9A10AEFB1BCD275E000AE752 /* Recitie.entitlements */,
 				9AFC1C341BCC829C00E76E09 /* AppDelegate.swift */,
+				6182082C1BD52DDB001AF83F /* TodoItem.swift */,
+				6182082E1BD53072001AF83F /* TodoList.swift */,
 				9AFC1C381BCC829C00E76E09 /* Main.storyboard */,
 				9AFC1C3B1BCC829C00E76E09 /* Assets.xcassets */,
 				9AFC1C3D1BCC829C00E76E09 /* LaunchScreen.storyboard */,
@@ -360,6 +366,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6182082F1BD53072001AF83F /* TodoList.swift in Sources */,
+				6182082D1BD52DDB001AF83F /* TodoItem.swift in Sources */,
 				9A80B6071BCEA9A70028F6D2 /* EventosViewController.swift in Sources */,
 				9A10AEFF1BCD33A8000AE752 /* CadastroViewController.swift in Sources */,
 				9A84C2121BD1843C00776DC3 /* UsersViewController.swift in Sources */,

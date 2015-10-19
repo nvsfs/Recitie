@@ -20,36 +20,36 @@ class UsersViewController : UIViewController {
         super.viewDidLoad()
         
         
-        let container = CKContainer.defaultContainer()
-        let publicData = container.publicCloudDatabase
-        
-        
-        let query = CKQuery(recordType: "User", predicate: NSPredicate(format: "TRUEPREDICATE", argumentArray: nil))
-        
-        publicData.performQuery(query, inZoneWithID: nil, completionHandler: { results, error in
-            
-            if error == nil {
-                
-                for user in results! {
-                    
-                    
-                    let name:String = user["name"] as! String
-                    let photoURL:String = user["photoURL"] as! String
-                    let email:String = user["email"] as! String
-                    let id:String = user["id"] as! String
-                    
-                    print(name)
-                    print(email)
-                    print(id)
-                    self.nameLabel.text = name
-                    self.emailLabel.text = email
-                    self.load_image(photoURL)
-                    
-                }
-            }else {
-                
-            }
-        })
+//        let container = CKContainer.defaultContainer()
+//        let publicData = container.publicCloudDatabase
+//        
+//        
+//        let query = CKQuery(recordType: "User", predicate: NSPredicate(format: "TRUEPREDICATE", argumentArray: nil))
+//        
+//        publicData.performQuery(query, inZoneWithID: nil, completionHandler: { results, error in
+//            
+//            if error == nil {
+//                
+//                for user in results! {
+//                    
+//                    
+//                    let name:String = user["name"] as! String
+//                    let photoURL:String = user["photoURL"] as! String
+//                    let email:String = user["email"] as! String
+//                    let id:String = user["id"] as! String
+//                    
+//                    print(name)
+//                    print(email)
+//                    print(id)
+//                    self.nameLabel.text = name
+//                    self.emailLabel.text = email
+//                    self.load_image(photoURL)
+//                    
+//                }
+//            }else {
+//                
+//            }
+//        })
     }
 
 

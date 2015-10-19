@@ -16,8 +16,8 @@ class PlacesViewController : UIViewController {
         super.viewDidLoad()
         
         
-        let container = CKContainer.defaultContainer()
-        let publicData = container.publicCloudDatabase
+//        let container = CKContainer.defaultContainer()
+//        let publicData = container.publicCloudDatabase
         
 //        let predicate = NSPredicate(format: ("name = %@",place.name), <#T##args: CVarArgType...##CVarArgType#>)
 //        

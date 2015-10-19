@@ -123,22 +123,22 @@ import CloudKit
         print(location.latitude)
         //let london = Places(title: "London", coordinate: CLLocationCoordinate2D(latitude: 51.507222, longitude: -0.1275), info: "Home to the 2012 Summer Olympics.")
         
-        let container = CKContainer.defaultContainer()
-        let publicData = container.publicCloudDatabase
+//        let container = CKContainer.defaultContainer()
+//        let publicData = container.publicCloudDatabase
         
         let newPlace:Places = Places(title: nameField.text!, coordinate: CLLocationCoordinate2D(latitude: location.latitude, longitude: location.longitude), info: descriptionField.text!)
         
         
-        let record = CKRecord(recordType: "Place")
-        record.setValue(newPlace.title, forKey: "name")
-        record.setValue(newPlace.description, forKey: "description")
-        record.setValue(newPlace.coordinate.latitude, forKey: "latitude")
-        record.setValue(newPlace.coordinate.longitude, forKey: "longitude")
-        publicData.saveRecord(record, completionHandler: { record, error in
-            if error != nil {
-                print(error)
-            }
-        })
+//        let record = CKRecord(recordType: "Place")
+//        record.setValue(newPlace.title, forKey: "name")
+//        record.setValue(newPlace.description, forKey: "description")
+//        record.setValue(newPlace.coordinate.latitude, forKey: "latitude")
+//        record.setValue(newPlace.coordinate.longitude, forKey: "longitude")
+//        publicData.saveRecord(record, completionHandler: { record, error in
+//            if error != nil {
+//                print(error)
+//            }
+//        })
         
         //
         NSNotificationCenter.defaultCenter().postNotificationName("newPlacePosted", object: self, userInfo: ["newPlace": newPlace])

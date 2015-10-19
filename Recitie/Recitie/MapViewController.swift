@@ -40,40 +40,40 @@ class MapViewController : UIViewController, CLLocationManagerDelegate, UIPopover
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let container = CKContainer.defaultContainer()
-        let publicData = container.publicCloudDatabase
-        
-        
-        let query = CKQuery(recordType: "Place", predicate: NSPredicate(format: "TRUEPREDICATE", argumentArray: nil))
-        
-        publicData.performQuery(query, inZoneWithID: nil, completionHandler: { results, error in
-            
-            if error == nil {
-                
-                for place in results! {
-                    
-                    
-                    let longitude:Double = place["longitude"] as! Double
-                    let latitude:Double = place["latitude"] as! Double
-                    let coordinate:CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
-                    
-                    
-                    let newPlace = Places(title: place["name"] as! String, coordinate: coordinate, info: place["description"] as! String)
-                    
-                    
-                    self.places.append(newPlace)
-                    dispatch_async(
-                        dispatch_get_main_queue(), {()-> Void in
-                            self.mapView.addAnnotation(newPlace)
-                            self.mapView.reloadInputViews()
-                            
-                    })
-                    
-                }
-            }else {
-                
-            }
-        })
+//        let container = CKContainer.defaultContainer()
+//        let publicData = container.publicCloudDatabase
+//        
+//        
+//        let query = CKQuery(recordType: "Place", predicate: NSPredicate(format: "TRUEPREDICATE", argumentArray: nil))
+//        
+//        publicData.performQuery(query, inZoneWithID: nil, completionHandler: { results, error in
+//            
+//            if error == nil {
+//                
+//                for place in results! {
+//                    
+//                    
+//                    let longitude:Double = place["longitude"] as! Double
+//                    let latitude:Double = place["latitude"] as! Double
+//                    let coordinate:CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+//                    
+//                    
+//                    let newPlace = Places(title: place["name"] as! String, coordinate: coordinate, info: place["description"] as! String)
+//                    
+//                    
+//                    self.places.append(newPlace)
+//                    dispatch_async(
+//                        dispatch_get_main_queue(), {()-> Void in
+//                            self.mapView.addAnnotation(newPlace)
+//                            self.mapView.reloadInputViews()
+//                            
+//                    })
+//                    
+//                }
+//            }else {
+//                
+//            }
+//        })
         
         
         //Mapa
@@ -293,18 +293,7 @@ class MapViewController : UIViewController, CLLocationManagerDelegate, UIPopover
                     self.popViewController.showInView(self.view, withImage: UIImage(named: "typpzDemo"), withMessage: "You just triggered a great popup window", animated: true)
                 }
             }
-            //        self.viewDidLoad()
-            //
-            ////        let newTitle = "PINOOOOOOO"
-            ////        let newSubtitle = "Funcionaaaaa!!"
-            //            if pino == nil{
-            //            }
-            //            else {
-            //        let newPin = pino as! MKAnnotation
-            //            //Places(title: newTitle, coordinate: locCoord, info: newSubtitle)
-            //        self.mapView.addAnnotations([newPin])
-            //            }
-            //        }
+        
             
         }
         

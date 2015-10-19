@@ -10,9 +10,13 @@ import Foundation
 import UIKit
 import CloudKit
 
-class CadastroViewController:UIViewController{
+// nameField = titleField
+// saveButton = savePressed
 
+class CadastroViewController:UIViewController{
+   
     
+    @IBOutlet weak var deadlinePicker: UIDatePicker!
     
     @IBOutlet weak var nameField: UITextField!
     
@@ -20,7 +24,7 @@ class CadastroViewController:UIViewController{
 
     var arrayEventos:[Event]?
    
-    @IBAction func saveButton(sender: AnyObject) {
+    @IBAction func saveButton(sender: UIButton) {
         
         let event: Event = Event()
 
@@ -32,6 +36,15 @@ class CadastroViewController:UIViewController{
 
         
         self.dismissViewControllerAnimated(true, completion: nil)
+        
+        
+        
+        
+        //notificacao
+        
+        let todoItem = TodoItem(deadline: deadlinePicker.date, title: nameField.text!, description: descriptionField.text!, UUID: NSUUID().UUIDString)
+        TodoList.sharedInstance.addItem(todoItem) // schedule a local notification to persist this item
+        self.navigationController?.popToRootViewControllerAnimated(true) // return to list view
    
     }
     

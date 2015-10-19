@@ -19,7 +19,7 @@ class ViewController: UIViewController, FBSDKLoginButtonDelegate {
     let user:User = User()
     
     
-    let container = CKContainer.defaultContainer()
+  //  let container = CKContainer.defaultContainer()
     
     func handleIdentityChanged(notification: NSNotification){
         
@@ -81,7 +81,7 @@ class ViewController: UIViewController, FBSDKLoginButtonDelegate {
             print("Not logged in...")
         }
         else{
-            returnUserData()
+         //   returnUserData()
 
             print("Logged in...")
             
@@ -95,137 +95,137 @@ class ViewController: UIViewController, FBSDKLoginButtonDelegate {
         // Dispose of any resources that can be recreated.
     }
     
-        func returnUserData()
-    {
-        print("returnUserData")
-       
-        
-        let graphRequest : FBSDKGraphRequest = FBSDKGraphRequest(graphPath: "/me?fields=picture", parameters: ["fields":"id,email,name,first_name,last_name,gender,bio,age_range,about,context,currency,devices,education,favorite_athletes,favorite_teams,hometown,cover,picture"], HTTPMethod: "GET")
-        graphRequest.startWithCompletionHandler({ (connection, result, error) -> Void in
-            
-            if ((error) != nil)
-            {
-                // Process error
-                print("Error: \(error)")
-            }
-            else
-            {
-                
-                
-                let idUsuario:String = result.valueForKey("id") as! String
-                let imgURLString = "http://graph.facebook.com/" +  idUsuario + "/picture?type=large"
-                
-                self.user.name = result.valueForKey("name") as! String
-                self.user.fotoUrl = imgURLString
-                self.user.email = result.valueForKey("email") as! String
-                self.user.id = result.valueForKey("id") as! String
-                
-                print("-------------")
-                print(self.user.id)
-                
-                print("-------------")
-                let container = CKContainer.defaultContainer()
-                let publicData = container.publicCloudDatabase
-                
-                
-                let query = CKQuery(recordType: "User", predicate: NSPredicate(format: "TRUEPREDICATE", argumentArray: nil))
-                
-                publicData.performQuery(query, inZoneWithID: nil, completionHandler: { results, error in
-                    
-                    if error == nil {
-                        
-                        for comparacao in results! {
-                            
-                            
-                            let name:String = comparacao["name"] as! String
-                            let fotoURL:String = comparacao["photoURL"] as! String
-                            let email:String = comparacao["email"] as! String
-                            let id:String = comparacao["id"] as! String
-                            
-                            
-                            let usuario:User = User()
-                            
-                            usuario.name = name
-                            usuario.id = id
-                            usuario.email = email
-                            usuario.fotoUrl = fotoURL
-                            
-                            self.usuarios.append(usuario)
-                            
-                            print("-------------")
-                            print(name)
-                            print(email)
-                            print(id)
-                            print("-------------")
-                            
-                        }
-                    }else {
-                        
-                    }
-                    
-                    let teste:Bool = self.verificarDisponibilidade()
-                    
-                    
-                    if(teste == true){
-                    
-                    //print(result.valueForKey("id"))
-                    let record = CKRecord(recordType: "User")
-                    record.setValue(self.user.name, forKey: "name")
-                    record.setValue(self.user.email, forKey: "email")
-                    record.setValue(self.user.fotoUrl, forKey: "photoURL")
-                    record.setObject(self.user.id, forKey: "id")
-                    
-                    publicData.saveRecord(record, completionHandler: { record, error in
-                        if error != nil {
-                            print(error)
-                        }
-                    })
-                        
-                    }
-                    
-                    
-                    
-                    
-                })
-
-                
-                let defaultContainer: CKContainer = CKContainer.defaultContainer()
-                
-                //get the PublicDatabase inside the Container
-                let publicDatabase: CKDatabase = defaultContainer.publicCloudDatabase
-                
-                //create the target record id you will use to fetch by
-                let wellKnownID: CKRecordID = CKRecordID(recordName: "User")
-                
-                //fetch the target record using it's record id
-                publicDatabase.fetchRecordWithID(wellKnownID, completionHandler: { (record, error) -> Void in
-                    
-                    if error != nil {
-                        
-                        print("Uh oh, there was an error fetching...")
-                        print(error!.localizedDescription)
-                    }
-                    
-                    if record != nil {
-                        print("Fetched record by Id Successflly")
-                        print(record!.objectForKey("title"))
-                        print(record!.objectForKey("description"))
-                        print(record!.objectForKey("address"))
-                        print(record!.objectForKey("location"))
-                    }
-                })
-              
-   
-                
-                NSNotificationCenter.defaultCenter().postNotificationName("userInfoPosted", object: self, userInfo: ["userInfo" : self.user])
-                
-                
-            }
-            
-            
-            
-        })
-    }
+//        func returnUserData()
+//    {
+//        print("returnUserData")
+//       
+//        
+//        let graphRequest : FBSDKGraphRequest = FBSDKGraphRequest(graphPath: "/me?fields=picture", parameters: ["fields":"id,email,name,first_name,last_name,gender,bio,age_range,about,context,currency,devices,education,favorite_athletes,favorite_teams,hometown,cover,picture"], HTTPMethod: "GET")
+//        graphRequest.startWithCompletionHandler({ (connection, result, error) -> Void in
+//            
+//            if ((error) != nil)
+//            {
+//                // Process error
+//                print("Error: \(error)")
+//            }
+//            else
+//            {
+//                
+//                
+//                let idUsuario:String = result.valueForKey("id") as! String
+//                let imgURLString = "http://graph.facebook.com/" +  idUsuario + "/picture?type=large"
+//                
+//                self.user.name = result.valueForKey("name") as! String
+//                self.user.fotoUrl = imgURLString
+//                self.user.email = result.valueForKey("email") as! String
+//                self.user.id = result.valueForKey("id") as! String
+//                
+//                print("-------------")
+//                print(self.user.id)
+//                
+//                print("-------------")
+//                let container = CKContainer.defaultContainer()
+//                let publicData = container.publicCloudDatabase
+//                
+//                
+//                let query = CKQuery(recordType: "User", predicate: NSPredicate(format: "TRUEPREDICATE", argumentArray: nil))
+//                
+//                publicData.performQuery(query, inZoneWithID: nil, completionHandler: { results, error in
+//                    
+//                    if error == nil {
+//                        
+//                        for comparacao in results! {
+//                            
+//                            
+//                            let name:String = comparacao["name"] as! String
+//                            let fotoURL:String = comparacao["photoURL"] as! String
+//                            let email:String = comparacao["email"] as! String
+//                            let id:String = comparacao["id"] as! String
+//                            
+//                            
+//                            let usuario:User = User()
+//                            
+//                            usuario.name = name
+//                            usuario.id = id
+//                            usuario.email = email
+//                            usuario.fotoUrl = fotoURL
+//                            
+//                            self.usuarios.append(usuario)
+//                            
+//                            print("-------------")
+//                            print(name)
+//                            print(email)
+//                            print(id)
+//                            print("-------------")
+//                            
+//                        }
+//                    }else {
+//                        
+//                    }
+//                    
+//                    let teste:Bool = self.verificarDisponibilidade()
+//                    
+//                    
+//                    if(teste == true){
+//                    
+//                    //print(result.valueForKey("id"))
+//                    let record = CKRecord(recordType: "User")
+//                    record.setValue(self.user.name, forKey: "name")
+//                    record.setValue(self.user.email, forKey: "email")
+//                    record.setValue(self.user.fotoUrl, forKey: "photoURL")
+//                    record.setObject(self.user.id, forKey: "id")
+//                    
+//                    publicData.saveRecord(record, completionHandler: { record, error in
+//                        if error != nil {
+//                            print(error)
+//                        }
+//                    })
+//                        
+//                    }
+//                    
+//                    
+//                    
+//                    
+//                })
+//
+//                
+//                let defaultContainer: CKContainer = CKContainer.defaultContainer()
+//                
+//                //get the PublicDatabase inside the Container
+//                let publicDatabase: CKDatabase = defaultContainer.publicCloudDatabase
+//                
+//                //create the target record id you will use to fetch by
+//                let wellKnownID: CKRecordID = CKRecordID(recordName: "User")
+//                
+//                //fetch the target record using it's record id
+//                publicDatabase.fetchRecordWithID(wellKnownID, completionHandler: { (record, error) -> Void in
+//                    
+//                    if error != nil {
+//                        
+//                        print("Uh oh, there was an error fetching...")
+//                        print(error!.localizedDescription)
+//                    }
+//                    
+//                    if record != nil {
+//                        print("Fetched record by Id Successflly")
+//                        print(record!.objectForKey("title"))
+//                        print(record!.objectForKey("description"))
+//                        print(record!.objectForKey("address"))
+//                        print(record!.objectForKey("location"))
+//                    }
+//                })
+//              
+//   
+//                
+//                NSNotificationCenter.defaultCenter().postNotificationName("userInfoPosted", object: self, userInfo: ["userInfo" : self.user])
+//                
+//                
+//            }
+//            
+//            
+//            
+//        })
+//    }
     
 
   
@@ -284,49 +284,49 @@ class ViewController: UIViewController, FBSDKLoginButtonDelegate {
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         
-        container.accountStatusWithCompletionHandler{
-            (status: CKAccountStatus, error: NSError?) in
+       // container.accountStatusWithCompletionHandler{
+       //     (status: CKAccountStatus, error: NSError?) in
             
             /* Be careful, we might be on a different thread now so make sure that
             your UI operations go on the main thread */
-            dispatch_async(dispatch_get_main_queue(), {
-                
-                var title: String!
-                var message: String!
-                
-                if error != nil{
-                    title = "Error"
-                    message = "An error occurred = \(error)"
-                } else {
-                    
-                    title = "No errors occurred"
-                    
-                    switch status{
-                    case .Available:
-                        message = "The user is logged in to iCloud"
-                    case .CouldNotDetermine:
-                        message = "Could not determine if the user is logged" +
-                        " into iCloud or not"
-                    case .NoAccount:
-                        message = "User is not logged into iCloud"
-                    case .Restricted:
-                        message = "Could not access user's iCloud account information"
-                    }
-                    
-                    self.displayAlertWithTitle(title, message: message)
-                    
-                }
-                
-            })
-            
-        }
-        
+//            dispatch_async(dispatch_get_main_queue(), {
+//                
+//                var title: String!
+//                var message: String!
+//                
+//                if error != nil{
+//                    title = "Error"
+//                    message = "An error occurred = \(error)"
+//                } else {
+//                    
+//                    title = "No errors occurred"
+//                    
+//                    switch status{
+//                    case .Available:
+//                        message = "The user is logged in to iCloud"
+//                    case .CouldNotDetermine:
+//                        message = "Could not determine if the user is logged" +
+//                        " into iCloud or not"
+//                    case .NoAccount:
+//                        message = "User is not logged into iCloud"
+//                    case .Restricted:
+//                        message = "Could not access user's iCloud account information"
+//                    }
+//                    
+//                    self.displayAlertWithTitle(title, message: message)
+//                    
+//                }
+//                
+//            })
+//            
+//        }
+//        
+//    }
+//    
+//    deinit{
+//        NSNotificationCenter.defaultCenter().removeObserver(self)
+//    }
+//
     }
-    
-    deinit{
-        NSNotificationCenter.defaultCenter().removeObserver(self)
-    }
-
-    
     
 }
